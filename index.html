@@ -3,316 +3,257 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MØVÏE LØVERZ Channels</title>
+<title>MØVÏE LØVERZ</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
 body{
-  background:url("https://i.ibb.co/HTXDdshk/photo-2026-03-02-20-57-03-7612765236499578904.jpg") no-repeat center center fixed;
-  background-size:cover;
-  color:white;
-  padding:20px;
-  position:relative;
+background:url("https://i.ibb.co/HTXDdshk/photo-2026-03-02-20-57-03-7612765236499578904.jpg") no-repeat center center fixed;
+background-size:cover;
+color:white;
+overflow-x:hidden;
 }
 
+/* 🌈 Animated Gradient Overlay */
 body::before{
-  content:"";
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.75);
-  z-index:-1;
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:linear-gradient(45deg, rgba(0,0,0,0.7), rgba(229,9,20,0.3), rgba(0,0,0,0.7));
+background-size:400% 400%;
+animation:gradientMove 12s ease infinite;
+z-index:-1;
+}
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
-/* Loader */
+/* 🔥 Cinematic Loader */
 #loader{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:#000;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+font-size:30px;
+letter-spacing:4px;
+color:#e50914;
+animation:fadeOut 1s ease 2s forwards;
 }
-.spinner{
-  width:60px;height:60px;
-  border:6px solid #333;
-  border-top:6px solid #e50914;
-  border-radius:50%;
-  animation:spin 1s linear infinite;
+@keyframes fadeOut{
+to{opacity:0;visibility:hidden;}
 }
-@keyframes spin{100%{transform:rotate(360deg);}}
 
-/* Header */
-.header{text-align:center;margin-bottom:30px;}
-.header h1{font-size:20px;}
+.header{
+text-align:center;
+padding:30px 15px;
+animation:fadeIn 1.5s ease forwards;
+}
+.header h1{
+font-size:18px;
+opacity:0.9;
+}
 .header h2{
-  font-size:32px;
-  color:#e50914;
-  letter-spacing:3px;
-  animation: glow 2s infinite alternate;
-}
-@keyframes glow{
-  from{ text-shadow:0 0 5px #e50914; }
-  to{ text-shadow:0 0 20px #ff1f2e; }
+font-size:32px;
+color:#e50914;
+letter-spacing:3px;
+text-shadow:0 0 15px rgba(0,0,0,0.8);
 }
 
-.container{max-width:420px;margin:auto;}
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(-20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.container{
+max-width:420px;
+margin:auto;
+padding:10px;
+}
 
 .card{
-  margin-bottom:30px;
-  transform:translateY(40px);
-  opacity:0;
-  transition:all 0.6s ease;
-}
-.card.show{
-  transform:translateY(0);
-  opacity:1;
+margin-bottom:25px;
+opacity:0;
+transform:translateY(40px);
+transition:0.6s ease;
 }
 
+.card.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* 💎 Glassmorphism Card */
 .image-box{
-  position:relative;
-  width:100%;
-  height:220px;
-  border-radius:15px;
-  overflow:hidden;
-  box-shadow:0 15px 30px rgba(0,0,0,0.7);
+position:relative;
+height:210px;
+border-radius:20px;
+overflow:hidden;
+backdrop-filter:blur(8px);
+box-shadow:0 10px 30px rgba(0,0,0,0.7);
+cursor:pointer;
+transition:0.4s ease;
+}
+.image-box:hover{
+transform:scale(1.03);
 }
 
 .image-box img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
 .image-box::after{
-  content:"";
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height:70%;
-  background:linear-gradient(to top,
-      rgba(0,0,0,0.95),
-      rgba(0,0,0,0.6),
-      transparent);
+content:"";
+position:absolute;
+bottom:0;
+width:100%;
+height:70%;
+background:linear-gradient(to top, rgba(0,0,0,0.95), transparent);
 }
 
 .join-btn{
-  position:absolute;
-  bottom:15px;
-  left:15px;
-  z-index:2;
-  padding:6px 14px;
-  background:#e50914;
-  color:white;
-  text-decoration:none;
-  border-radius:4px;
-  font-weight:bold;
-  font-size:14px;
-  cursor:pointer;
-  transition:0.3s;
-}
-.join-btn:hover{
-  background:#ff1f2e;
-  box-shadow:0 0 10px #e50914;
+position:absolute;
+bottom:15px;
+left:15px;
+background:#e50914;
+padding:6px 14px;
+border-radius:4px;
+font-size:13px;
+font-weight:bold;
 }
 
 .channel-name{
-  margin-top:10px;
-  font-size:18px;
-  padding-left:5px;
+margin-top:10px;
+padding:10px;
+font-weight:bold;
+font-size:16px;
+background:rgba(0,0,0,0.5);
+border-radius:12px;
+backdrop-filter:blur(6px);
+text-align:center;
 }
 
+/* Footer */
 .footer{
-  text-align:center;
-  margin-top:40px;
-  padding-top:20px;
-  border-top:1px solid #444;
+text-align:center;
+margin:30px 0;
 }
+
 .share-btn{
-  padding:8px 18px;
-  background:#e50914;
-  border:none;
-  border-radius:5px;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
-  margin-top:10px;
+padding:8px 20px;
+background:#e50914;
+border:none;
+border-radius:6px;
+color:white;
+font-weight:bold;
+cursor:pointer;
 }
+
 </style>
 </head>
+
 <body>
 
-<div id="loader"><div class="spinner"></div></div>
+<div id="loader">MØVÏE LØVERZ ❤️</div>
 
 <div class="header">
-  <h1>Join And Support Our All Channels</h1>
-  <h2>MØVÏE LØVERZ</h2>
+<h1>Join And Support Our Channels ❤️</h1>
+<h2>MØVÏE LØVERZ</h2>
 </div>
 
-<div class="container">
-
-<!-- 1 -->
-<div class="card">
-<div class="image-box">
-<img src="https://i.ibb.co/rfKSX1HW/photo-2026-03-02-19-53-23-7612748829724508164.jpg">
-<div class="join-btn" onclick="openTelegram('yourchannel1')">Join Now</div>
-</div>
-<div class="channel-name">Telugu HD Movies & Web Series</div>
-</div>
-
-<!-- 2 -->
-<div class="card">
-<div class="image-box">
-<img src="https://i.ibb.co/Tqt7yzCg/photo-2026-03-02-19-52-56-7612748705170456580.jpg">
-<div class="join-btn" onclick="openTelegram('yourchannel2')">Join Now</div>
-</div>
-<div class="channel-name">Telugu Dubbed Movies Channel</div>
-</div>
-
-<!-- 3 -->
-<div class="card">
-<div class="image-box">
-<img src="https://i.ibb.co/QBs8VgQ/photo-2026-02-28-09-00-02-7612748623566077976.jpg">
-<div class="join-btn" onclick="openTelegram('yourchannel3')">Join Now</div>
-</div>
-<div class="channel-name">Hall Print Movies Channel 🎬</div>
-</div>
-
-<!-- 4 -->
-<div class="card">
-<div class="image-box">
-<img src="https://i.ibb.co/jZTBLpK2/photo-2026-03-02-19-09-57-7612748580616405008.jpg">
-<div class="join-btn" onclick="openTelegram('yourchannel4')">Join Now</div>
-</div>
-<div class="channel-name">All Marvel Movies & Series</div>
-</div>
-
-<!-- 5 -->
-<div class="card">
-<div class="image-box">
-<img src="https://i.ibb.co/QBs8VgQ/photo-2026-02-28-09-00-02-7612748623566077976.jpg">
-<div class="join-btn" onclick="openTelegram('yourchannel5')">Join Now</div>
-</div>
-<div class="channel-name">OTT Updates & Film Updates</div>
-</div>
-
-<!-- 6 -->
-<div class="card">
-<div class="image-box">
-<img src="https://i.ibb.co/rfKSX1HW/photo-2026-03-02-19-53-23-7612748829724508164.jpg">
-<div class="join-btn" onclick="openTelegram('yourchannel6')">Join Now</div>
-</div>
-<div class="channel-name">Heart Beat Season 1 & 2</div>
-</div>
-
-<!-- 7 -->
-<div class="card">
-<div class="image-box">
-<img src="https://i.ibb.co/jZTBLpK2/photo-2026-03-02-19-09-57-7612748580616405008.jpg">
-<div class="join-btn" onclick="openTelegram('yourchannel7')">Join Now</div>
-</div>
-<div class="channel-name">Amazon & Flipkart Best Loot Deals</div>
-</div>
-
-<!-- 8 -->
-<div class="card">
-<div class="image-box">
-<img src="https://i.ibb.co/Tqt7yzCg/photo-2026-03-02-19-52-56-7612748705170456580.jpg">
-<div class="join-btn" onclick="openTelegram('yourchannel8')">Join Now</div>
-</div>
-<div class="channel-name">Our Main Channel 💥</div>
-</div>
-
-<!-- 9 -->
-<div class="card">
-<div class="image-box">
-<img src="https://i.ibb.co/rfKSX1HW/photo-2026-03-02-19-53-23-7612748829724508164.jpg">
-<div class="join-btn" onclick="openTelegram('yourchannel9')">Join Now</div>
-</div>
-<div class="channel-name">Movies Request Group ⚡️</div>
-</div>
-
-<!-- 10 -->
-<div class="card">
-<div class="image-box">
-<img src="https://i.ibb.co/QBs8VgQ/photo-2026-02-28-09-00-02-7612748623566077976.jpg">
-<div class="join-btn" onclick="openTelegram('yourchannel10')">Join Now</div>
-</div>
-<div class="channel-name">Movies Search Bot</div>
-</div>
-
-<!-- 11 -->
-<div class="card">
-<div class="image-box">
-<img src="https://i.ibb.co/Tqt7yzCg/photo-2026-03-02-19-52-56-7612748705170456580.jpg">
-<div class="join-btn" onclick="openTelegram('yourchannel11')">Join Now</div>
-</div>
-<div class="channel-name">Movies Search Bot 2.0</div>
-</div>
-
-<!-- 12 -->
-<div class="card">
-<div class="image-box">
-<img src="https://i.ibb.co/jZTBLpK2/photo-2026-03-02-19-09-57-7612748580616405008.jpg">
-<div class="join-btn" onclick="openTelegram('yourchannel12')">Join Now</div>
-</div>
-<div class="channel-name">File To Link Bot 1</div>
-</div>
-
-<!-- 13 -->
-<div class="card">
-<div class="image-box">
-<img src="https://i.ibb.co/QBs8VgQ/photo-2026-02-28-09-00-02-7612748623566077976.jpg">
-<div class="join-btn" onclick="openTelegram('yourchannel13')">Join Now</div>
-</div>
-<div class="channel-name">File To Link Bot 2</div>
-</div>
-
-</div>
+<div class="container"></div>
 
 <div class="footer">
-<h3>Share & Support Us ❤️</h3>
 <button class="share-btn" onclick="sharePage()">Share Now</button>
 </div>
 
 <script>
-window.onload=function(){
-document.getElementById("loader").style.display="none";
-};
 
-const cards=document.querySelectorAll(".card");
-window.addEventListener("scroll",()=>{
-cards.forEach(card=>{
-if(card.getBoundingClientRect().top<window.innerHeight-100){
-card.classList.add("show");
+/* ===== EDIT ENCODED LINKS LATER ===== */
+
+const channels = [
+
+{type:"public", link:"VVNFUk5BTUUx", name:"Telugu HD Movies & Web Series", img:"https://i.ibb.co/rfKSX1HW/photo1.jpg"},
+{type:"public", link:"VVNFUk5BTUUy", name:"Telugu Dubbed Movies Channel", img:"https://i.ibb.co/Tqt7yzCg/photo2.jpg"},
+{type:"private", link:"aHR0cHM6Ly90Lm1lLytJTlZJVEUx", name:"Hall Print Movies Channel 🎬", img:"https://i.ibb.co/QBs8VgQ/photo3.jpg"},
+{type:"public", link:"VVNFUk5BTUU0", name:"All Marvel Movies & Series", img:"https://i.ibb.co/jZTBLpK2/photo4.jpg"},
+{type:"private", link:"aHR0cHM6Ly90Lm1lLytJTlZJVEUy", name:"OTT Updates & Film Updates", img:"https://i.ibb.co/rfKSX1HW/photo5.jpg"},
+{type:"public", link:"VVNFUk5BTUU2", name:"Heart Beat Season 1 & 2", img:"https://i.ibb.co/Tqt7yzCg/photo6.jpg"},
+{type:"public", link:"VVNFUk5BTUU3", name:"Amazon & Flipkart Best Loot Deals", img:"https://i.ibb.co/QBs8VgQ/photo7.jpg"},
+{type:"private", link:"aHR0cHM6Ly90Lm1lLytJTlZJVEUz", name:"Our Main Channel 💥", img:"https://i.ibb.co/jZTBLpK2/photo8.jpg"},
+{type:"public", link:"VVNFUk5BTUU5", name:"Movies Request Group ⚡️", img:"https://i.ibb.co/rfKSX1HW/photo9.jpg"},
+{type:"public", link:"VVNFUk5BTUUxMA==", name:"Movies Search Bot", img:"https://i.ibb.co/Tqt7yzCg/photo10.jpg"},
+{type:"private", link:"aHR0cHM6Ly90Lm1lLytJTlZJVEU0", name:"Movies Search Bot 2.0", img:"https://i.ibb.co/QBs8VgQ/photo11.jpg"},
+{type:"public", link:"VVNFUk5BTUUxMg==", name:"File To Link Bot 1", img:"https://i.ibb.co/jZTBLpK2/photo12.jpg"},
+{type:"private", link:"aHR0cHM6Ly90Lm1lLytJTlZJVEU1", name:"File To Link Bot 2", img:"https://i.ibb.co/rfKSX1HW/photo13.jpg"}
+
+];
+
+const container=document.querySelector(".container");
+
+channels.forEach(c=>{
+container.innerHTML+=`
+<div class="card">
+<div class="image-box" onclick="openTelegram('${c.type}','${c.link}')">
+<img src="${c.img}" loading="lazy">
+<div class="join-btn">Join Now</div>
+</div>
+<div class="channel-name">${c.name}</div>
+</div>`;
+});
+
+/* Smooth Animation */
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
 }
 });
+},{threshold:0.2});
+
+document.querySelectorAll(".card").forEach(card=>{
+observer.observe(card);
 });
 
-function openTelegram(username){
-var app="tg://resolve?domain="+username;
-var web="https://t.me/"+username;
-window.location=app;
-setTimeout(function(){window.location=web;},1500);
+/* Telegram Open */
+function openTelegram(type, encoded){
+let decoded=atob(encoded);
+if(type==="public"){
+window.location="tg://resolve?domain="+decoded;
+setTimeout(()=>{window.location="https://t.me/"+decoded;},900);
+}else{
+window.location=decoded;
+}
 }
 
+/* Share */
 function sharePage(){
 if(navigator.share){
 navigator.share({
 title:"MØVÏE LØVERZ Channels",
-text:"Join And Support Our Channels",
+text:"Join And Support Our Channels ❤️",
 url:window.location.href
 });
 }else{
 alert("Copy Link: "+window.location.href);
 }
 }
+
 </script>
 
 </body>
-  </html>
+</html>
