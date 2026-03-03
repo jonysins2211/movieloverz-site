@@ -13,6 +13,10 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 background:url("https://i.ibb.co/HTXDdshk/photo-2026-03-02-20-57-03-7612765236499578904.jpg") no-repeat center center fixed;
 background-size:cover;
@@ -20,24 +24,26 @@ color:white;
 overflow-x:hidden;
 }
 
-/* 🌈 Animated Gradient Overlay */
+/* Animated Gradient Overlay */
 body::before{
 content:"";
 position:fixed;
 width:100%;
 height:100%;
-background:linear-gradient(45deg, rgba(0,0,0,0.7), rgba(229,9,20,0.3), rgba(0,0,0,0.7));
+background:linear-gradient(45deg, rgba(0,0,0,0.6), rgba(229,9,20,0.25), rgba(0,0,0,0.6));
 background-size:400% 400%;
 animation:gradientMove 12s ease infinite;
 z-index:-1;
 }
+
 @keyframes gradientMove{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
 }
 
-/* 🔥 Cinematic Loader */
+/* 🎬 PREMIUM CINEMATIC LOADER */
+
 #loader{
 position:fixed;
 width:100%;
@@ -47,24 +53,60 @@ display:flex;
 justify-content:center;
 align-items:center;
 z-index:9999;
-font-size:30px;
-letter-spacing:4px;
-color:#e50914;
-animation:fadeOut 1s ease 2s forwards;
-}
-@keyframes fadeOut{
-to{opacity:0;visibility:hidden;}
+overflow:hidden;
+animation:loaderFade 1.2s ease 4.5s forwards;
 }
 
+.loader-text{
+font-size:clamp(26px,6vw,44px);
+letter-spacing:6px;
+color:#e50914;
+white-space:nowrap;   /* 🔥 Force single line */
+animation:dramaticZoom 4.5s ease forwards;
+text-shadow:0 0 10px #e50914;
+}
+
+@keyframes dramaticZoom{
+0%{
+transform:scale(0.5);
+opacity:0;
+filter:blur(15px);
+text-shadow:0 0 0px #e50914;
+}
+40%{
+opacity:1;
+filter:blur(0px);
+}
+70%{
+transform:scale(1.05);
+text-shadow:0 0 25px #ff1e2d, 0 0 40px #e50914;
+}
+100%{
+transform:scale(1.25);
+opacity:0;
+filter:blur(4px);
+}
+}
+
+@keyframes loaderFade{
+to{
+opacity:0;
+visibility:hidden;
+}
+}
+
+/* Header */
 .header{
 text-align:center;
 padding:30px 15px;
 animation:fadeIn 1.5s ease forwards;
 }
+
 .header h1{
 font-size:18px;
 opacity:0.9;
 }
+
 .header h2{
 font-size:32px;
 color:#e50914;
@@ -84,7 +126,7 @@ padding:10px;
 }
 
 .card{
-margin-bottom:25px;
+margin-bottom:35px;
 opacity:0;
 transform:translateY(40px);
 transition:0.6s ease;
@@ -95,25 +137,29 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* 💎 Glassmorphism Card */
 .image-box{
 position:relative;
 height:210px;
 border-radius:20px;
 overflow:hidden;
-backdrop-filter:blur(8px);
 box-shadow:0 10px 30px rgba(0,0,0,0.7);
 cursor:pointer;
 transition:0.4s ease;
 }
+
 .image-box:hover{
-transform:scale(1.03);
+transform:scale(1.05);
 }
 
 .image-box img{
 width:100%;
 height:100%;
 object-fit:cover;
+transition:0.6s ease;
+}
+
+.image-box:hover img{
+transform:scale(1.1);
 }
 
 .image-box::after{
@@ -122,53 +168,100 @@ position:absolute;
 bottom:0;
 width:100%;
 height:70%;
-background:linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+background:linear-gradient(to top, rgba(0,0,0,0.9), transparent);
 }
 
 .join-btn{
 position:absolute;
 bottom:15px;
-left:15px;
+right:15px;
 background:#e50914;
 padding:6px 14px;
 border-radius:4px;
 font-size:13px;
 font-weight:bold;
+transition:0.3s;
+}
+
+.join-btn:hover{
+background:#ff1e2d;
+box-shadow:0 0 12px #e50914;
 }
 
 .channel-name{
-margin-top:10px;
-padding:10px;
+margin-top:12px;
 font-weight:bold;
-font-size:16px;
-background:rgba(0,0,0,0.5);
-border-radius:12px;
-backdrop-filter:blur(6px);
+font-size:17px;
 text-align:center;
+position:relative;
+display:inline-block;
+left:50%;
+transform:translateX(-50%);
+text-shadow:0 4px 15px rgba(0,0,0,0.9);
+transition:0.3s;
 }
 
-/* Footer */
+.channel-name::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-4px;
+width:0%;
+height:2px;
+background:#e50914;
+transition:0.4s ease;
+}
+
+.card:hover .channel-name::after{
+width:100%;
+}
+
+.card:hover .channel-name{
+color:#ff2e3c;
+}
+
+/* Premium Glass Footer */
 .footer{
+margin:50px 15px 40px;
+padding:20px;
 text-align:center;
-margin:30px 0;
+border-radius:20px;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(10px);
+box-shadow:0 10px 30px rgba(0,0,0,0.7);
+}
+
+.footer-text{
+margin-top:15px;
+font-size:15px;
+opacity:0.9;
+letter-spacing:1px;
 }
 
 .share-btn{
-padding:8px 20px;
+padding:10px 25px;
 background:#e50914;
 border:none;
 border-radius:6px;
 color:white;
 font-weight:bold;
 cursor:pointer;
+transition:0.3s;
 }
 
+.share-btn:hover{
+background:#ff1e2d;
+box-shadow:0 0 15px #e50914;
+}
 </style>
 </head>
 
 <body>
 
-<div id="loader">MØVÏE LØVERZ</div>
+<!-- 🎬 Cinematic Loader -->
+<div id="loader">
+<div class="loader-text">𝐌Ø𝐕Ï𝐄 𝐋Ø𝐕𝐄𝐑𝐙</div>
+</div>
 
 <div class="header">
 <h1>Join And Support Our Channels</h1>
@@ -179,14 +272,12 @@ cursor:pointer;
 
 <div class="footer">
 <button class="share-btn" onclick="sharePage()">Share Now</button>
+<div class="footer-text">Share And Support Us ❤️</div>
 </div>
 
 <script>
 
-/* ===== EDIT ENCODED LINKS LATER ===== */
-
 const channels = [
-
 {type:"public", link:"VVNFUk5BTUUx", name:"Telugu HD Movies & Web Series", img:"https://i.ibb.co/rfKSX1HW/photo1.jpg"},
 {type:"public", link:"VVNFUk5BTUUy", name:"Telugu Dubbed Movies Channel", img:"https://i.ibb.co/Tqt7yzCg/photo2.jpg"},
 {type:"private", link:"aHR0cHM6Ly90Lm1lLytJTlZJVEUx", name:"Hall Print Movies Channel 🎬", img:"https://i.ibb.co/QBs8VgQ/photo3.jpg"},
@@ -200,7 +291,6 @@ const channels = [
 {type:"private", link:"aHR0cHM6Ly90Lm1lLytJTlZJVEU0", name:"Movies Search Bot 2.0", img:"https://i.ibb.co/QBs8VgQ/photo11.jpg"},
 {type:"public", link:"VVNFUk5BTUUxMg==", name:"File To Link Bot 1", img:"https://i.ibb.co/jZTBLpK2/photo12.jpg"},
 {type:"private", link:"aHR0cHM6Ly90Lm1lLytJTlZJVEU1", name:"File To Link Bot 2", img:"https://i.ibb.co/rfKSX1HW/photo13.jpg"}
-
 ];
 
 const container=document.querySelector(".container");
@@ -216,7 +306,6 @@ container.innerHTML+=`
 </div>`;
 });
 
-/* Smooth Animation */
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
@@ -229,18 +318,16 @@ document.querySelectorAll(".card").forEach(card=>{
 observer.observe(card);
 });
 
-/* Telegram Open */
 function openTelegram(type, encoded){
 let decoded=atob(encoded);
 if(type==="public"){
 window.location="tg://resolve?domain="+decoded;
-setTimeout(()=>{window.location="https://t.me/"+decoded;},900);
+setTimeout(()=>{window.location="https://t.me/"+decoded;},800);
 }else{
 window.location=decoded;
 }
 }
 
-/* Share */
 function sharePage(){
 if(navigator.share){
 navigator.share({
